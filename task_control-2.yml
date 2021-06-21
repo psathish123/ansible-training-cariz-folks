@@ -1,0 +1,14 @@
+---
+- name: Task controller 1
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+  - name: Service management
+    service: 
+      name: "{{ item }}"
+      state: stopped
+    loop:
+      - postfix
+      - httpd
+

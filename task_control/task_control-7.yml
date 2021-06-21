@@ -1,0 +1,32 @@
+---
+- name: Task controller with when condition
+  hosts: localhost
+  gather_facts: yes
+
+  vars:
+    input_memory: 500
+    operating_system: 
+      - Redhat
+
+  tasks:
+
+  - set_fact:
+      memory_required: "{{ input_memory }}"
+ 
+  - name: Check OS for install app
+    debug:
+      msg: "This machine is Redhat Server"
+    when: ansible_distribution in operating_system
+
+  - name: deploy my app
+    yum:
+      name: httpd
+      state: latest
+    when: 
+      - ansible_distribution in operating_system
+      - ansible_memtotal_mb >= memory_required
+
+  - name: Result
+    debug:
+      msg: "Unable to Deploy app Due to low memory"
+    when: ansible_memtotal_mb <= memory_required

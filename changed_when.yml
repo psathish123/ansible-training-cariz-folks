@@ -1,0 +1,25 @@
+---
+- name: Handler 
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+  - name: deploy my app
+    yum:
+      name: httpd
+      state: installed
+    register: httpstat
+    changed_when: true
+
+    notify:
+      - restart apache
+
+  - debug:
+      var: httpstat
+
+  handlers:
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted

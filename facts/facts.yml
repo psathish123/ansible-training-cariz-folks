@@ -1,0 +1,16 @@
+---
+- name: System Information using Facts 
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: Print Sytem details
+    debug:
+      msg: 
+        - "Hostname      : {{ ansible_hostname }}"
+        - "Memory        : {{ ansible_memtotal_mb }}"
+        - "Processor core: {{ ansible_processor_cores }} "
+        - "Distribution  : {{ ansible_distribution }}"
+        - "Version       : {{ ansible_distribution_version }}"
+        - "Architecture  : {{ ansible_machine }}"
+        - "UUID          : {{ ansible_product_uuid }}"

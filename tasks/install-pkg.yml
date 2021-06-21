@@ -1,0 +1,10 @@
+---
+- name: install package
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - import_tasks: install-rpm.yml
+    vars:
+      package: vsftpd
+      status: latest

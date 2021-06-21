@@ -1,0 +1,17 @@
+---
+- name: add line by blockinfile module
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - name: verify checksum
+    stat:
+      path: /etc/mine.conf
+      checksum_algorithm: md5
+    register: result
+
+  - debug:
+      var: result
+
+  - debug:
+      msg: "The checksum of file is {{ result.stat.checksum }}"

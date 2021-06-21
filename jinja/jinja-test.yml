@@ -1,0 +1,24 @@
+---
+- name: Jinja test
+  hosts: all
+  gather_facts: no
+  vars:
+    drinks: "yes"
+    fruits: "Banana"
+    transport: "Public"
+
+
+  tasks:
+  - name: Jinja if condition
+    debug:
+      msg: "{% if drinks %} We have drinks {% endif %}"
+
+  - name: Jinja if equal condition
+    debug:
+      msg: "{% if fruits == 'Banana' %} We have Banana {% endif %}"
+
+  - name: Jinja if else condition
+    debug:
+      msg: "{% if transport == 'Public' %} Transport avail {% else %} Transport Not avail {% endif %}"
+
+

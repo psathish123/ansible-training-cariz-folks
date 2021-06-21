@@ -1,0 +1,15 @@
+---
+- name: File create
+  hosts: all
+  gather_facts: no
+  tasks:
+      
+  - name: Copy using inline content
+    copy:
+      src: /tmp/file_from_ansible.txt
+      dest: /var/tmp/
+      backup: yes
+      owner: devops
+      group: devops 
+      mode: '0644'
+  

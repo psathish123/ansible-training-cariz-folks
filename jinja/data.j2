@@ -1,0 +1,17 @@
+
+
+Welcome to {{ ansible_facts.hostname }}
+
+Today's date {{ ansible_facts.date_time.date }}
+
+Default ipaddress {{ ansible_facts.default_ipv4.address }}
+
+
+=====================================================================
+
+BIOS info
+{{ dmidecode_output.stdout_lines | to_nice_yaml }}
+
+=====================================================================
+
+

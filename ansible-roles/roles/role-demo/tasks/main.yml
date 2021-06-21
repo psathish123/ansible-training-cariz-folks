@@ -1,0 +1,17 @@
+---
+# tasks file for role-demo
+
+- debug:
+    msg: "{{ ENV }}"
+
+- name: copy motd file to target machine
+  copy:
+    src: motd.conf
+    dest: /etc/motd
+    mode: '0644'
+
+- name: Copy Banner to Target machine
+  template:
+    src: banner.j2
+    dest: /etc/banner
+

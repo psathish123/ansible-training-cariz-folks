@@ -1,0 +1,15 @@
+---
+- name: user creation
+  hosts: localhost
+  gather_facts: no
+  vars:
+    password: ansible
+
+  tasks:
+
+  - name: user create and valut
+    user:
+      name: ansible1
+      create_home: yes
+      password: "{{ password | password_hash('sha512') }}"
+      shell: /bin/bash

@@ -1,0 +1,6 @@
+---
+# tasks file for tomcat
+
+- debug:
+    msg: "I am TOMCAT Role"
+

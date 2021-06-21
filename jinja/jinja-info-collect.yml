@@ -1,0 +1,15 @@
+---
+- name: Test playbook for jinja
+  hosts: all
+  gather_facts: yes
+  tasks:
+
+  - name: get bios information
+    shell: dmidecode -t 0
+    register: dmidecode_output
+
+  - name: Template render
+    template:
+      src: data.j2
+      dest: /tmp/dest-config-file.txt
+

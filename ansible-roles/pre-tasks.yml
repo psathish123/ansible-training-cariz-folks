@@ -1,0 +1,17 @@
+---
+- name: My role
+  hosts: all
+  gather_facts: yes
+
+  pre_tasks:
+    - name: Pre_task message
+      debug:
+        msg: "Ensure webserver configuration"
+
+    - name: check server compatibility
+      fail:
+        msg: "your server is not compatible {{ inventory_hostname }}"
+      when: ansible_kernel == "3.10.0-1062.el7.x86_64"
+   
+  roles:
+    - role-demo

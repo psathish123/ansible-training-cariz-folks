@@ -1,0 +1,19 @@
+---
+- name: Managing Variables using set_fact
+  hosts: all
+  gather_facts: no
+
+  tasks:
+
+  - set_fact:
+      myname: "Sathish"
+      
+  - debug:
+      msg: "Hello {{ myname }}"
+
+  - set_fact:
+      myname: "Kumar"
+      
+  - debug:
+      msg: "New-Name {{ myname }}"
+

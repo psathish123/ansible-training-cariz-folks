@@ -1,0 +1,9 @@
+---
+- name: Getting Variables from inventory
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - debug:
+      msg: "My Name is {{username}}"
+

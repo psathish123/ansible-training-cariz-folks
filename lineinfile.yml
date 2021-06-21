@@ -1,0 +1,12 @@
+---
+- name: add line 
+  hosts: all
+  gather_facts: no
+  tasks:
+      
+  - name: add entry in a file
+    lineinfile:
+      path: /etc/mine.conf
+      line: 'Add this line to the file'
+      state: present
+  

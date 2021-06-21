@@ -1,0 +1,6 @@
+---
+- name: My role
+  hosts: all
+  gather_facts: yes
+  roles:
+    - role-demo

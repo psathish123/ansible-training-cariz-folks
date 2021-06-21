@@ -1,0 +1,11 @@
+---
+- name: Managing Variables
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+  - debug:
+      msg: "Hello {{ myname }}"
+
+
+    

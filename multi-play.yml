@@ -1,0 +1,23 @@
+---
+- name: Play1
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - debug:
+      msg: "This is first Play"
+
+  - set_fact:
+      user: ansible-demo
+
+- name: Play2
+  hosts: 192.168.43.138
+  gather_facts: no
+  tasks:
+
+  - debug:
+      msg: "{{ user }}"
+
+  - debug:
+      msg: "This is second Play"
+

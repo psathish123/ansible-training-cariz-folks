@@ -1,0 +1,11 @@
+---
+- name: Play1
+  hosts: all
+  gather_facts: no
+  tasks:
+  - debug:
+      msg: "This is first Play"
+
+
+- name: Play2
+  import_playbook: task_control-1.yml

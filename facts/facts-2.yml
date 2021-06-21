@@ -1,0 +1,10 @@
+---
+- name: System Information using Facts 
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: Print Sytem details
+    debug:
+      msg: 
+        - "Hostname      : {{ ansible_hostname }}"

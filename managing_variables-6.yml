@@ -1,0 +1,17 @@
+---
+- name: Getting Variables from input file
+  hosts: all
+  gather_facts: no
+  vars_files:
+    - variable.yml
+
+  tasks:
+
+  - debug:
+      msg: 
+        - "Name  {{ name }}"
+        - "Std   {{ class }}"
+        - "Days  {{ day }}"
+        - "Month {{ month }}"
+        - "Year  {{ year }}"
+

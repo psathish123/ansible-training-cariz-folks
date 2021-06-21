@@ -1,0 +1,5 @@
+---
+# tasks file for apache
+
+- debug:
+    msg: "I am Apache Role"

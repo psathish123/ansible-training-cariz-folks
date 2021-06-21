@@ -1,0 +1,7 @@
+---
+- name: shell
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - shell: "true"
+    changed_when: false

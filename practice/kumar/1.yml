@@ -1,0 +1,12 @@
+---
+- name: server information
+  hosts: localhost
+  gather_facts: yes
+
+  tasks:
+  - name: hostname/memory/os information
+    debug:
+      msg:
+        - Hostname is  {{ ansible_fqdn }}
+        - Total memeory is {{ ansible_memtotal_mb }} MB
+        - OS distribution is {{ ansible_distribution }}

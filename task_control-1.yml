@@ -1,0 +1,14 @@
+---
+- name: Task controller 1
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+  - name: Print details
+    debug:
+      msg: "Task name is {{ item }}"
+    loop:
+      - ONE
+      - TWO
+      - THREE
+

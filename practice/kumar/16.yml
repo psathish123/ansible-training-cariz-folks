@@ -1,0 +1,30 @@
+---
+- name: memeory and architecture validation
+  hosts: all
+  ignore_errors: yes
+  tasks:
+
+  - name: architecture validation and file creation
+    file:
+      path: /tmp/server-64bit.txt
+      state: touch
+    when: (ansible_architecture == "x86_64") 
+
+  - name: architecture validation and file creation ( if not)
+    file:
+      path: /tmp/server-32bit.txt
+      state: touch
+    when: (ansible_architecture != "x86_64")
+
+  - name: memeory is low during validation
+    file:
+      path: /tmp/low-memory.txt
+      state: touch
+    when: ansible_memtotal_mb <= 1024
+
+  - name: memeory is high during validation
+    file:
+      path: /tmp/enough-memory.txt
+      state: touch
+    when: ansible_memtotal_mb >= 1024
+

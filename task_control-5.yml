@@ -1,0 +1,29 @@
+---
+- name: Task controller 1
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    data:
+    - user0
+    - user1
+    - user2
+    
+    userdetails:
+    - name: Kumar
+      group: admin
+
+    - name: Kiruba
+      group: admin
+
+  tasks:
+  - name: "with_items"
+    debug:
+      msg: "{{ item }}"
+    with_items: "{{ data }}"
+
+  - name: Print User details
+    debug:
+      msg: "UserName: {{ item.name }} and GroupName: {{ item.group }}"
+    loop: "{{ userdetails }}"
+  

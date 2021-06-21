@@ -1,0 +1,28 @@
+---
+- name: creating user via yml
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    username: sathish
+    status: present
+
+  tasks:
+  - name: arun user and home dir
+    user:
+      name: "{{ username }}"
+      state: "{{ status }}"
+    register: out
+
+  - debug:
+      var: out
+
+  - name: User creation output
+    debug:
+      msg: "User created"
+    when: out is changed 
+
+  - name: User creation output
+    debug:
+      msg: "User exist in server"
+    when: out.name == username

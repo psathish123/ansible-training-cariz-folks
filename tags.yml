@@ -1,0 +1,31 @@
+---
+- name: Managing Variables using set_fact
+  hosts: all
+  gather_facts: no
+
+  tasks:
+
+  - name: get total number of user from /etc/passwd
+    shell: cat /etc/passwd |wc -l
+    register: TotalCount
+    tags: test
+  
+  - name: Print output
+    debug:
+      var: TotalCount
+
+  - set_fact:
+      Usercount: "{{ TotalCount.stdout }}"
+    tags: test
+
+  - name: Print total User count
+    debug:
+      msg: "Total User count {{ Usercount }}"    
+    tags: test
+
+  - name: My Linux command 
+    debug:
+      msg: 
+        - "My Command is  {{ TotalCount.cmd }}" 
+        - "Job Start Time {{ TotalCount.start }}"
+        - "Job End Time   {{ TotalCount.end }}"

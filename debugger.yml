@@ -1,0 +1,11 @@
+- hosts: localhost
+  strategy: debug
+  gather_facts: no
+
+  vars:
+    pkg_name: not_exist
+
+  tasks:
+    - name: Install a package
+      yum: 
+        name: "{{ pkg_name }}"

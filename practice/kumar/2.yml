@@ -1,0 +1,19 @@
+---
+- name: 1G memeory condition
+  hosts: localhost
+  gather_facts: yes
+  vars:
+    assingmemeory: 500
+
+  tasks:
+  - name: Memeory is high
+    debug:
+      msg: success
+    when:
+      - ansible_memtotal_mb >= assingmemeory
+
+  - name: Memeory is low
+    debug:
+      msg: failed
+    when:
+      - ansible_memtotal_mb <= assingmemeory

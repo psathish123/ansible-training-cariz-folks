@@ -1,0 +1,16 @@
+---
+- name: get hostname
+  hosts: all
+  gather_facts: no
+
+  tasks:
+
+  - debug:
+      msg: "Hello {{ name }}"
+    ignore_errors: yes
+  
+  - fail:
+
+  - name: Task 3
+    debug:
+      msg: "Success"

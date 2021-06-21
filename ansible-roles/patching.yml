@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+
+  - name: full patch
+    yum:
+      name: '*'
+    tags: "FullPatch"
+
+  - name: full patch
+    yum:
+      security: yes
+    tags: "SecurityPatch"

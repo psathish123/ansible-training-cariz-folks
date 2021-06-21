@@ -1,0 +1,9 @@
+---
+- name: Import Task demo
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - import_tasks: task1.yml 
+
+  - import_tasks: task2.yml 

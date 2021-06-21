@@ -1,0 +1,24 @@
+---
+- name: creating user via yml
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    username: sathish
+    status: present
+
+  tasks:
+  - name: arun user and home dir
+    user:
+      name: "{{ username }}"
+      state: "{{ status }}"
+    register: out
+
+  - name: check user in passwd table
+    shell: grep ^"{{ username }}:" /etc/passwd | cut -d ":" -f 1 ; true
+    register: passwd_out
+
+  - name: User creation output
+    debug:
+      msg: "User exist in server"
+    when: passwd_out.stdout == username

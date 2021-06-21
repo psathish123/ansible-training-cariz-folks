@@ -1,0 +1,15 @@
+---
+- name: Task controller 1
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: read a file
+    shell: for i in  `seq 1 10`; do echo user$i ; done
+    register: output
+
+  - file:
+      path: /tmp/{{ item }}
+      state: touch
+    with_items: "{{ output.stdout_lines }}"
+   

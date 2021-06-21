@@ -1,0 +1,18 @@
+---
+- name: System Information using Facts 
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: Print Sytem details
+    debug:
+      msg: 
+        - "Hostname      : {{ ansible_hostname }}"
+        
+  - name: Print facts method 2
+    debug:
+      var: ansible_facts['hostname']
+
+  - name: default ipv4
+    debug:
+      var: ansible_facts['default_ipv4']['address']

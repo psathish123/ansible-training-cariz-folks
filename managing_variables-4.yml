@@ -1,0 +1,24 @@
+---
+- name: Managing Variables
+  hosts: all
+  gather_facts: no
+  vars:
+    firstname: "Sathish"
+
+  tasks:
+
+  - debug:
+      msg: "FirstName {{ firstname }}"
+
+  - debug:
+      msg: "Welcome   {{ firstname }}"
+    vars:
+      firstname: Kiruba
+
+  - debug:
+      msg: "LastName {{ lastname }}"
+    vars:
+      lastname: "Kumar"
+
+
+    

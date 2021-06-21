@@ -1,0 +1,15 @@
+---
+- name: add line by blockinfile module
+  hosts: all
+  gather_facts: no
+  tasks:
+      
+  - name: add multiple lines in a file
+    blockinfile:
+      path: /tmp/class.txt
+      block: >
+        First line added by ansible module
+        second line also 
+        Third line too   
+      state: present
+      create: true

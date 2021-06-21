@@ -1,0 +1,19 @@
+---
+- name: Create New Users
+  hosts: localhost
+#  become: true
+  gather_facts: false
+  vars:
+    my_password: ansible
+
+  tasks:
+    - name: Create Users
+      user:
+        name: "{{ item }}"
+        #password: "{{ my_password | password_hash('sha512') }}"
+        password: "$6$E/lEgQuuxkSajhU0$0Js8J7yOz1TLTfhV4/iTbpoUwz3r/nTdHR/aaBnTLBbaJItS0qPnQAzINIwOnpi4nwU4.79pZvJoPolTbEZ8S0"
+        shell: /bin/bash
+        update_password: on_create
+      loop:
+        - sen
+        - abc
