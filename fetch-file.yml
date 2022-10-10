@@ -1,0 +1,16 @@
+---
+- name: run script in target and copy output file to ansible master
+  hosts: all
+  gather_facts: no
+
+  tasks:
+
+  - name: run script in target server
+    shell: echo "Hello ansible" >> /tmp/a.txt
+
+  - name: copy target file to ansible master
+    fetch:
+      src: /tmp/a.txt
+      dest: /tmp/{{ inventory_hostname }}-a.txt
+      flat: yes
+
